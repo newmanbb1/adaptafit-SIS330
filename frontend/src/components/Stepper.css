@@ -1,0 +1,86 @@
+/* frontend/src/components/Stepper.css */
+
+.stepper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  opacity: 0.5;
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid var(--border-color);
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid var(--button-bg); /* Línea de progreso azul */
+  width: 0%;
+  top: 20px;
+  left: -50%;
+  z-index: 3;
+  transition: width 0.4s ease;
+}
+
+.stepper-item .step-counter {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--border-color);
+  color: var(--main-bg);
+  font-weight: 700;
+  z-index: 5;
+  transition: background-color 0.4s ease;
+}
+
+.stepper-item .step-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+/* Estado Completado */
+.stepper-item.completed {
+  opacity: 1;
+}
+.stepper-item.completed::after {
+  width: 100%; /* Rellena la línea de progreso */
+}
+.stepper-item.completed .step-counter {
+  background: var(--button-bg);
+  color: var(--main-text);
+}
+
+/* Estado Activo */
+.stepper-item.active {
+  opacity: 1;
+}
+.stepper-item.active .step-counter {
+  background: var(--button-bg);
+  color: var(--main-text);
+  box-shadow: 0 0 0 3px rgba(0, 127, 255, 0.3);
+}
+
+/* Ocultar línea del primer item */
+.stepper-item:first-child::before,
+.stepper-item:first-child::after {
+  content: none;
+}

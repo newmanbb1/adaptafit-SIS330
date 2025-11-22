@@ -1,0 +1,80 @@
+/* frontend/src/components/HomePage.css */
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas */
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrado */
+  padding: 0 2rem; /* Espaciado lateral */
+  min-height: 90vh; /* Ocupa casi toda la pantalla */
+}
+
+.hero-content {
+  /* Columna izquierda (texto) */
+  z-index: 2; /* Asegura que esté sobre el fondo de partículas */
+}
+
+.hero-headline {
+  font-size: 4.5rem; /* Texto MUY grande */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px; /* Más compacto */
+}
+
+.hero-headline-highlight {
+  color: var(--button-bg); /* El azul eléctrico */
+  display: block; /* Pone "Impulsado por IA" en una nueva línea */
+}
+
+.hero-subheadline {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta-button {
+  background-color: var(--button-bg);
+  color: var(--main-text);
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+}
+
+.hero-cta-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 127, 255, 0.2);
+  color: var(--main-text);
+}
+
+.hero-visual {
+  /* La columna derecha (visual) */
+  /* La dejaremos vacía, el fondo de partículas llenará el espacio */
+  z-index: 1;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+    text-align: center;
+    min-height: 80vh;
+  }
+  .hero-visual {
+    display: none; /* Oculta la columna visual vacía */
+  }
+  .hero-subheadline {
+    margin: 0 auto 2.5rem auto; /* Centra el texto */
+  }
+  .hero-headline {
+    font-size: 3rem; /* Texto más pequeño en móvil */
+  }
+}

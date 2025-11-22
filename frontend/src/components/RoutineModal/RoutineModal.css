@@ -1,0 +1,178 @@
+/* frontend/src/components/RoutineModal.css */
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: var(--section-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 1000px; /* Más ancho para la tabla */
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.modal-close-button:hover {
+  color: var(--main-text);
+}
+
+.modal-header {
+  border-bottom: 2px solid var(--button-bg);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-header span {
+  color: var(--button-bg);
+  font-weight: 700;
+}
+.modal-header h2 {
+  color: var(--main-text);
+  margin-bottom: 0;
+}
+
+/* Estilos de la tabla de ejercicios */
+.modal-ejercicios-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.modal-ejercicios-table th,
+.modal-ejercicios-table td {
+  border: 1px solid var(--border-color);
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.modal-ejercicios-table thead {
+  background-color: var(--button-bg);
+  color: var(--main-text);
+}
+
+.modal-ejercicios-table tbody tr {
+  background-color: var(--section-bg);
+  transition: background-color 0.2s ease;
+}
+.modal-ejercicios-table tbody tr:nth-of-type(even) {
+  background-color: #2a2a2a;
+}
+.modal-ejercicios-table tbody tr:hover {
+  background-color: #333;
+}
+
+.modal-ejercicios-table td strong {
+  color: var(--main-text);
+  font-size: 1.1rem;
+}
+.ejercicio-tecnica, .ejercicio-justificacion {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+}
+.ejercicio-justificacion {
+  font-style: italic;
+}
+
+/* --- Responsivo para el Modal y Tabla --- */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.5rem;
+  }
+  
+  /* Colapsa la tabla en móvil */
+  .modal-ejercicios-table thead {
+    display: none;
+  }
+  .modal-ejercicios-table tr {
+    display: block;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+  }
+  .modal-ejercicios-table td {
+    display: block;
+    text-align: right;
+    border: none;
+    border-bottom: 1px dashed var(--border-color);
+    position: relative;
+    padding-left: 50%;
+  }
+  .modal-ejercicios-table td:last-child {
+    border-bottom: none;
+  }
+  .modal-ejercicios-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
+    text-align: left;
+    color: var(--button-bg);
+  }
+}
+
+/* --- Estilos para los GIFs de ejercicios --- */
+.exercise-gif {
+  max-width: 120px; /* Tamaño del GIF en la tabla */
+  height: auto;
+  border-radius: 8px;
+  display: block; /* Para centrarlo si es necesario */
+  margin: 0 auto;
+  border: 1px solid var(--border-color);
+}
+
+.no-gif-message {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+/* Ajustar la tabla para la nueva columna */
+@media (max-width: 768px) {
+  .modal-ejercicios-table td[data-label="Visual"] {
+    text-align: center; /* Centra el GIF en móvil */
+  }
+  .modal-ejercicios-table td::before {
+    /* Ajustar el padding para que no se superponga */
+    padding-right: 5px; 
+  }
+}
