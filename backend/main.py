@@ -51,17 +51,17 @@ def clean_numpy_types(data):
 
 # --- 2. Configuración Inicial ---
 # Dejamos el Plan B (clave directa) por ahora para confirmar que funciona
-GOOGLE_API_KEY = "AIzaSyAblpKZAL3vq7kDMCGznujenCdaBuBc9BM"
+GOOGLE_API_KEY = ""
 genai.configure(api_key=GOOGLE_API_KEY)
 
-RAPIDAPI_KEY = "1349ea78d1msheae5d19cbdcbbc2p17d442jsn2127d6cc2eaa"
+RAPIDAPI_KEY = ""
 if not RAPIDAPI_KEY:
     print("ADVERTENCIA: RAPIDAPI_KEY no está configurada en el entorno.")
     # Puedes poner una clave de fallback si quieres, pero no es recomendado
     # RAPIDAPI_KEY = "tu-clave-aqui"
 
 # --- Añade esto ---
-MESHY_API_KEY =  "msy_T79ZYka7JxG597yqTHluRtPyFFIDXQsuScnq" # ¡Mejor usar .env!
+MESHY_API_KEY =  "" #
 if not MESHY_API_KEY :
     print("ADVERTENCIA: MESHY_API_KEY no está configurada. Se omitirá la generación de Meshy 3D.")
 # --- Fin de añadido ---  
